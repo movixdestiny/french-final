@@ -124,6 +124,7 @@ export default async function handler(req, res) {
 }
 
 // Helper function to process the Netflix ID and generate the m3u8 response
+// Helper function to process the Netflix ID and generate the m3u8 response
 async function processNetflixId(res, netflixId) {
   const m3u8Url = `https://proxy.smashystream.com/proxy/echo1/https://pcmirror.cc/hls/${netflixId}.m3u8`;
   console.log(`Fetching M3U8 playlist from URL: ${m3u8Url}`);
@@ -138,7 +139,7 @@ async function processNetflixId(res, netflixId) {
   while (i < lines.length) {
     const line = lines[i].trim();
 
-    if (line.startsWith('#EXT-X-MEDIA') && (line.includes('LANGUAGE="fra"'))) {
+    if (line.startsWith('#EXT-X-MEDIA') && line.includes('LANGUAGE="fra"')) {
       const audioMatch = line.match(/URI="([^"]+)"/);
       if (audioMatch) {
         arabicAudioUrl = audioMatch[1];

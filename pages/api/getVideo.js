@@ -124,7 +124,6 @@ export default async function handler(req, res) {
 }
 
 // Helper function to process the Netflix ID and generate the m3u8 response
-// Helper function to process the Netflix ID and generate the m3u8 response
 async function processNetflixId(res, netflixId) {
   const m3u8Url = `https://proxy.smashystream.com/proxy/echo1/https://pcmirror.cc/hls/${netflixId}.m3u8`;
   console.log(`Fetching M3U8 playlist from URL: ${m3u8Url}`);

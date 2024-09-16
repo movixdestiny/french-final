@@ -88,7 +88,7 @@ export default async function handler(req, res) {
             while (i < lines.length) {
                 const line = lines[i].trim();
 
-                if (line.startsWith('#EXT-X-MEDIA') && (line.includes('LANGUAGE="fra"'){
+                if (line.startsWith('#EXT-X-MEDIA') && (line.includes('LANGUAGE="fra"){
                     const audioMatch = line.match(/URI="([^"]+)"/);
                     if (audioMatch) {
                         arabicAudioUrl = audioMatch[1];
@@ -112,7 +112,7 @@ export default async function handler(req, res) {
             }
 
             const filteredM3U8 = `#EXTM3U
-#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ara",NAME="Arabic",DEFAULT=NO,URI="${arabicAudioUrl}"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="fra",NAME="French",DEFAULT=NO,URI="${arabicAudioUrl}"
 #EXT-X-STREAM-INF:BANDWIDTH=40000000,AUDIO="aac",DEFAULT=YES,RESOLUTION=1280x720,CLOSED-CAPTIONS=NONE
 ${videoUrl}`;
 
@@ -174,7 +174,7 @@ ${videoUrl}`;
         while (i < lines.length) {
             const line = lines[i].trim();
 
-            if (line.startsWith('#EXT-X-MEDIA') && (line.includes('LANGUAGE="ara"') || (line.includes('LANGUAGE="und"') && line.includes('a/0/0.m3u8')))) {
+            if (line.startsWith('#EXT-X-MEDIA') && (line.includes('LANGUAGE="fra"') )) {
                 const audioMatch = line.match(/URI="([^"]+)"/);
                 if (audioMatch) {
                     arabicAudioUrl = audioMatch[1];
@@ -198,7 +198,7 @@ ${videoUrl}`;
         }
 
         const filteredM3U8 = `#EXTM3U
-#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ara",NAME="Arabic",DEFAULT=NO,URI="${arabicAudioUrl}"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="fra",NAME="French",DEFAULT=NO,URI="${arabicAudioUrl}"
 #EXT-X-STREAM-INF:BANDWIDTH=40000000,AUDIO="aac",DEFAULT=YES,RESOLUTION=1280x720,CLOSED-CAPTIONS=NONE
 ${videoUrl}`;
 

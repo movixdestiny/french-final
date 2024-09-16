@@ -130,7 +130,7 @@ async function processNetflixId(res, netflixId) {
   const m3u8Response = await fetch(m3u8Url);
   const m3u8Data = await m3u8Response.text();
 
-  let frenchAudioUrl = null;
+  let arabicAudioUrl = null;
   let videoUrl = null;
 
   const lines = m3u8Data.split('\n');
@@ -138,10 +138,10 @@ async function processNetflixId(res, netflixId) {
   while (i < lines.length) {
     const line = lines[i].trim();
 
-    if (line.startsWith('#EXT-X-MEDIA') && line.includes('LANGUAGE="fra"')) {
+    if (line.startsWith('#EXT-X-MEDIA') && (line.includes('LANGUAGE="fra"')) {
       const audioMatch = line.match(/URI="([^"]+)"/);
       if (audioMatch) {
-        frenchAudioUrl = audioMatch[1];
+        arabicAudioUrl = audioMatch[1];
       }
     }
 
@@ -157,12 +157,12 @@ async function processNetflixId(res, netflixId) {
     i++;
   }
 
-  if (!frenchAudioUrl || !videoUrl) {
-    throw new Error('French audio URL or 720p video URL not found in M3U8 playlist');
+  if (!arabicAudioUrl || !videoUrl) {
+    throw new Error('Arabic audio URL or 720p video URL not found in M3U8 playlist');
   }
 
   const filteredM3U8 = `#EXTM3U
-#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="fra",NAME="French",DEFAULT=NO,URI="${frenchAudioUrl}"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="fra",NAME="French",DEFAULT=NO,URI="${arabicAudioUrl}"
 #EXT-X-STREAM-INF:BANDWIDTH=40000000,AUDIO="aac",DEFAULT=YES,RESOLUTION=1280x720,CLOSED-CAPTIONS=NONE
 ${videoUrl}`;
 

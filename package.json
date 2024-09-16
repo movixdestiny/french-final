@@ -1,0 +1,24 @@
+{
+  "name": "nextjs-streaming-api",
+  "version": "1.0.0",
+  "description": "A Next.js service for streaming availability with caching using Supabase",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.0.5",
+    "node-fetch": "^2.6.7", 
+    "next": "13.4.12", 
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.43.0",
+    "eslint-config-next": "13.4.12"
+  },
+  "author": "",
+  "license": "ISC"
+}

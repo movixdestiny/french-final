@@ -138,7 +138,7 @@ async function processNetflixId(res, netflixId) {
   while (i < lines.length) {
     const line = lines[i].trim();
 
-    if (line.startsWith('#EXT-X-MEDIA') && (line.includes('LANGUAGE="fra"')) {
+    if (line.startsWith('#EXT-X-MEDIA') && (line.includes('LANGUAGE="fra"'))) {
       const audioMatch = line.match(/URI="([^"]+)"/);
       if (audioMatch) {
         arabicAudioUrl = audioMatch[1];
